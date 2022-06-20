@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 char buffer[128];
-int n = 129; 
+int n = 128; 
 
 int main(int argc, char *argv[]) {
     FILE *fin, *fout;
@@ -15,8 +15,11 @@ int main(int argc, char *argv[]) {
     fout = fopen(argv[2], "w");
 
     while(1) {
-        fgets(buffer, n, fin);
-        if(feof(fin)) break;
+        do{
+            char *ref = fgets(buffer, n, fin);
+        }while (!feof(fin))
+        
         fputs(buffer, fout);
+         
     }
 }
